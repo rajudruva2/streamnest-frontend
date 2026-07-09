@@ -1,0 +1,1 @@
+export default function Home(){const vids=['Kubernetes','Docker','AWS','Terraform','DevOps'];return <div style={{padding:20}}><h1>StreamNest</h1><input placeholder='Search'/><div><input type='file'/><button>Upload</button></div>{vids.map(v=><div key={v}><h3>{v}</h3><video controls width='400'></video></div>)}</div>}
