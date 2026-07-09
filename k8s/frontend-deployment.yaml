@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: streamnest-frontend
+  namespace: streamnest
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: streamnest-frontend
+
+  template:
+    metadata:
+      labels:
+        app: streamnest-frontend
+
+    spec:
+      containers:
+      - name: frontend
+
+        image: rajvam6806/streamnest-frontend:latest
+
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 80
