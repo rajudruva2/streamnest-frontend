@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: streamnest-frontend
-  namespace: streamnest
+  namespace: streamnest-frontend
 
 spec:
   selector:
