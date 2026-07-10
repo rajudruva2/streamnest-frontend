@@ -1,7 +1,8 @@
-
+ 
 import { useEffect, useState } from "react";
 
 const API_URL = "http://54.160.26.131:32379/api/v1";
+const FILE_URL = "http://54.160.26.131:32379";
 
 interface Video {
   id: string;
@@ -65,10 +66,16 @@ export default function Home() {
       setDescription("");
       setFile(null);
 
-      const input = document.getElementById("videoFile") as HTMLInputElement;
-      if (input) input.value = "";
+      const input = document.getElementById(
+        "videoFile"
+      ) as HTMLInputElement;
+
+      if (input) {
+        input.value = "";
+      }
 
       await loadVideos();
+
     } catch (err) {
       console.error(err);
       alert("Upload failed.");
@@ -129,16 +136,20 @@ export default function Home() {
 
       {!loading &&
         videos.map((video) => (
-          <div key={video.id} style={{ marginBottom: "30px" }}>
+          <div
+            key={video.id}
+            style={{ marginBottom: "30px" }}
+          >
             <h3>{video.title}</h3>
 
             <p>{video.description}</p>
 
-            <video controls width="500">
-              <source
-                src={`${API_URL}/videos/${video.id}/stream`}
-                type={video.mimetype}
-              />
+            <video
+              controls
+              width="600"
+              src={`${FILE_URL}/${video.filepath}`}
+            >
+              Your browser does not support the video tag.
             </video>
           </div>
         ))}
