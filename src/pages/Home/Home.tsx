@@ -1,9 +1,8 @@
  
 import { useEffect, useState } from "react";
 
-const API_URL = "http://54.160.26.131:32379/api/v1";
-const FILE_URL = "http://54.160.26.131:32379";
-
+const API_URL = "/api/v1";
+const FILE_URL = "";
 interface Video {
   id: string;
   title: string;
@@ -147,7 +146,7 @@ export default function Home() {
             <video
               controls
               width="600"
-              src={`${FILE_URL}/${video.filepath}`}
+	      src={`/${video.filepath}`}
             >
               Your browser does not support the video tag.
             </video>
