@@ -11,6 +11,7 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "600"
     nginx.ingress.kubernetes.io/client-body-buffer-size: "16m"
     nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+    nginx.ingress.kubernetes.io/proxy-buffering: "on"
 
 spec:
   ingressClassName: nginx
