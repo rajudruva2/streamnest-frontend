@@ -1,0 +1,43 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: streamnest-ingress
+  namespace: streamnest
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - streamnest.rajplatform.online
+      secretName: streamnest-tls
+
+  rules:
+    - host: streamnest.rajplatform.online
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: streamnest-frontend
+                port:
+                  number: 80
+
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: streamnest-backend
+                port:
+                  number: 3000
+
+          - path: /uploads
+            pathType: Prefix
+            backend:
+              service:
+                name: streamnest-backend
+                port:
+                  number: 3000
